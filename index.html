@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#060a18">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>FluentFlow – Speak English Fluently</title>
+<style>:root{--bg:#060a18;--card:rgba(255,255,255,.06);--line:rgba(255,255,255,.13);--tx:#f8fafc;--mut:#9fb0c8;--c:#2dd4bf;--g:#4ade80;--r:#fb7185;--panel:#0e1530;--glow1:#6d28d9;--glow2:#0d9488;--grad:linear-gradient(135deg,#7c3aed,#06b6d4)}
+:root[data-theme="light"]{--bg:#f6f4ff;--card:rgba(255,255,255,.9);--line:rgba(15,23,42,.13);--tx:#1e293b;--mut:#64748b;--c:#0d9488;--g:#16a34a;--r:#e11d48;--panel:#fff;--glow1:#c4b5fd;--glow2:#99f6e4}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--tx);font:16px/1.5 Inter,"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;display:flex;justify-content:center;overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;width:440px;height:440px;border-radius:50%;filter:blur(120px);opacity:.38;z-index:0;pointer-events:none;animation:fl 16s ease-in-out infinite alternate}
+body:before{background:var(--glow1);top:-140px;left:-120px}body:after{background:var(--glow2);bottom:-160px;right:-120px;animation-delay:-7s}
+@keyframes fl{to{transform:translate(60px,40px) scale(1.15)}}
+#app{position:relative;z-index:1;width:100%;max-width:1060px;min-height:100vh;padding:calc(env(safe-area-inset-top,0px) + 16px) 16px calc(env(safe-area-inset-bottom,0px) + 24px);display:flex;flex-direction:column}
+.logo{font-size:28px;font-weight:800;letter-spacing:-1px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin:0}
+.head{display:flex;justify-content:space-between;align-items:center}.hb{display:flex;gap:8px}
+.tag{color:var(--mut);margin:2px 0 14px}
+button{font:inherit;color:var(--tx);cursor:pointer;border:1px solid var(--line);background:var(--card);backdrop-filter:blur(12px);border-radius:16px;padding:12px 14px;transition:.18s}
+button:hover:not(:disabled){border-color:var(--c);transform:translateY(-1px)}button:disabled{opacity:.4}
+.ic{width:42px;height:42px;padding:0;border-radius:14px;font-size:18px}
+.cta{width:100%;border:0;background:var(--grad);color:#fff;font-weight:800;font-size:17px;padding:16px;border-radius:18px;box-shadow:0 10px 36px rgba(124,58,237,.4);margin-top:14px}
+.cta:hover:not(:disabled){border:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.st{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px 8px;text-align:center}
+.st b{display:block;font-size:22px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}.st span{font-size:11px;color:var(--mut);letter-spacing:.6px}
+.lab{font-size:12px;color:var(--mut);letter-spacing:2px;text-transform:uppercase;margin:14px 0 8px}
+.topics{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.tp{text-align:left;padding:14px;border-radius:20px}
+.tp i{display:flex;width:42px;height:42px;border-radius:13px;align-items:center;justify-content:center;font-style:normal;font-size:22px;margin-bottom:8px}
+.tp small{display:block;color:var(--mut);font-size:12px}
+.tp.on{border-color:var(--c);box-shadow:0 0 0 1px var(--c),0 8px 30px rgba(45,212,191,.2)}
+.seg{display:flex;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:4px;gap:4px;max-width:420px}
+.seg button{flex:1;border:0;background:transparent;padding:10px}.seg .on{background:var(--grad);color:#fff;font-weight:700}
+.tabs{display:flex;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:4px;gap:4px;margin-bottom:12px}
+.tabs button{flex:1;border:0;background:transparent;padding:11px 4px;font-size:14px}.tabs .on{background:var(--grad);color:#fff;font-weight:800}
+.warn{background:rgba(251,113,133,.14);border:1px solid rgba(251,113,133,.45);color:var(--tx);border-radius:16px;padding:12px;font-size:14px;margin-bottom:14px}
+.lessons{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:10px}
+.lesson{display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:14px;border-radius:20px}
+.lesson i{font-style:normal;font-size:26px;width:48px;height:48px;border-radius:14px;background:rgba(124,58,237,.18);display:flex;align-items:center;justify-content:center;flex:none}
+.lesson small{display:block;color:var(--mut);font-size:13px;line-height:1.3}
+.exr{display:flex;gap:6px;align-items:center;margin:8px 0}.exr span{flex:1}.exr .ic{width:38px;height:38px;font-size:15px}
+.top{display:flex;justify-content:space-between;align-items:center;color:var(--mut);font-size:14px}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:6px 12px}
+.stage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:14px 0;text-align:center}
+.orbwrap{position:relative;width:210px;height:210px;display:flex;align-items:center;justify-content:center}
+.ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(124,58,237,.55);opacity:0}
+.orbwrap.ai .ring,.orbwrap.listen .ring{animation:rg 2s ease-out infinite}.orbwrap .ring:nth-child(2){animation-delay:.7s}.orbwrap .ring:nth-child(3){animation-delay:1.4s}
+.orbwrap.ai .ring{border-color:rgba(56,189,248,.6)}.orbwrap.listen .ring{border-color:rgba(34,197,94,.6)}
+@keyframes rg{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.25);opacity:0}}
+.orb{position:relative;width:160px;height:160px;border-radius:50%;border:0;padding:0;font-size:0;background:radial-gradient(circle at 30% 25%,#ddd6fe,#7c3aed 45%,#4c1d95);box-shadow:0 0 70px rgba(124,58,237,.6),inset 0 -12px 30px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;gap:5px}
+.orbwrap.ai .orb{background:radial-gradient(circle at 30% 25%,#bae6fd,#38bdf8 45%,#0c4a6e);box-shadow:0 0 90px rgba(56,189,248,.75);animation:br 1.3s ease-in-out infinite}
+.orbwrap.listen .orb{background:radial-gradient(circle at 30% 25%,#bbf7d0,#22c55e 45%,#14532d);box-shadow:0 0 90px rgba(34,197,94,.7)}
+.orbwrap.think .orb{animation:sp 1.6s linear infinite;filter:saturate(.8)}
+@keyframes br{50%{transform:scale(1.07)}}@keyframes sp{to{transform:rotate(360deg)}}
+.bar{width:7px;height:20px;border-radius:5px;background:#fff;animation:wv .9s ease-in-out infinite}.bar:nth-child(2){animation-delay:.15s}.bar:nth-child(3){animation-delay:.3s}.bar:nth-child(4){animation-delay:.45s}.bar:nth-child(5){animation-delay:.6s}
+@keyframes wv{50%{height:54px}}
+.mi{font-size:46px}.status{color:var(--mut);min-height:22px}
+.cap{width:100%;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px;text-align:left;font-size:18px;line-height:1.45;backdrop-filter:blur(12px)}
+.cap small{display:block;color:var(--c);font-size:11px;letter-spacing:2px;margin-bottom:4px}
+.me{width:100%;text-align:left;color:var(--g);font-size:15px;padding:0 6px}
+.fix{width:100%;text-align:left;background:rgba(45,212,191,.1);border:1px solid rgba(45,212,191,.4);border-radius:18px;padding:12px 14px;font-size:15px}
+.fix b{color:var(--c)}.fix.ok{background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.4)}.fix.ok b{color:var(--g)}
+.row{display:flex;gap:8px}.row input{flex:1;min-width:0}
+input,textarea{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px;width:100%;outline:0}input:focus,textarea:focus{border-color:var(--c)}
+textarea{min-height:96px;resize:vertical;font-family:ui-monospace,Consolas,monospace;font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px;margin:10px 0;text-align:left;backdrop-filter:blur(12px)}
+.meter{height:9px;background:var(--line);border-radius:9px;overflow:hidden;margin:4px 0 12px}.meter i{display:block;height:100%;background:var(--grad);border-radius:9px}
+.mrow{display:flex;justify-content:space-between;font-size:14px}h2{margin:6px 0 12px}
+.modal{position:fixed;inset:0;background:rgba(5,8,18,.75);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:18px;z-index:9}
+.modal>div{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:20px;width:100%;max-width:460px;max-height:92vh;overflow:auto}
+.hint{color:var(--mut);font-size:13px;margin:8px 0}a{color:var(--c)}
+.top,.card,.stage,.fix,.row,.cta,#app>h1.logo{max-width:680px;margin-left:auto;margin-right:auto;width:100%}
+.cta{max-width:520px}
+@media(min-width:900px){#app{padding:30px 44px 40px}.logo{font-size:36px}.topics{grid-template-columns:repeat(3,1fr)}.lessons{grid-template-columns:repeat(2,1fr)}.orbwrap{width:250px;height:250px}.orb{width:190px;height:190px}.cap{font-size:20px}.stats{max-width:620px}}
+@media(max-width:380px){.topics{grid-template-columns:1fr 1fr}.logo{font-size:24px}}
+select{font:inherit;color:var(--tx);background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;width:100%;outline:0}select:focus{border-color:var(--c)}
+select{margin-bottom:6px}.modal .lab{margin:10px 0 4px}
+.pane{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%}
+.hlp{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);color:var(--mut);font-size:15px}
+@media(min-width:900px){.stage.sess{display:grid;grid-template-columns:340px 1fr;gap:40px;align-items:center;max-width:1000px;text-align:left}}
+.heroTalk{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;margin:8px 0 18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:8px 0}.chips button{padding:9px 15px;border-radius:30px}.chips .on{border-color:var(--c);color:var(--c);background:var(--card)}
+.asst{display:flex;flex-direction:column;gap:14px;max-width:1000px;margin:0 auto;width:100%;flex:1}
+.asst .side{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.asst .orbwrap{width:170px;height:170px}.asst .orb{width:130px;height:130px}
+.log{display:flex;flex-direction:column;gap:10px;overflow-y:auto;max-height:44vh;padding:4px}
+.msg{max-width:90%;padding:10px 14px;border-radius:18px;line-height:1.45}
+.msg.ai{align-self:flex-start;background:var(--card);border:1px solid var(--line);border-bottom-left-radius:6px}
+.msg.me{align-self:flex-end;background:var(--grad);color:#fff;border-bottom-right-radius:6px}
+.msg small{display:block;margin-top:6px;font-size:13px;opacity:.9}
+.mini{width:auto;height:28px;padding:0 10px;font-size:13px;border-radius:10px}
+@media(min-width:900px){.asst{flex-direction:row;align-items:stretch;gap:40px}.asst .side{width:340px;justify-content:center}.asst .orbwrap{width:250px;height:250px}.asst .orb{width:190px;height:190px}.log{flex:1;max-height:64vh}}
+</style>
+
+</head><body><div id="app"></div>
+<script>
+/* ===== SETTINGS ===== */
+let MODELS=["openai/gpt-oss-120b","openai/gpt-oss-20b","llama-3.3-70b-versatile"],MI=0,MODEL=MODELS[0];   // faster: "llama-3.1-8b-instant"
+const WORKER_URL="/api/chat";                      // optional: your Cloudflare Worker URL (see worker-groq.js)
+/* ===================== */
+const TOP=[["💬","Free Talk","Chat about anything","a friendly new friend","#8b5cf6,#6366f1"],["🏠","Daily Life","Home, family, routine","a friendly neighbor","#f59e0b,#ef4444"],["💼","Work & Career","Interviews, meetings","a supportive career mentor","#0ea5e9,#2563eb"],["✈️","Travel","Airports, hotels, trips","a helpful travel buddy","#14b8a6,#22d3ee"],["🍽️","Food & Cafés","Order, chat, enjoy","a friendly café owner","#f472b6,#e11d48"],["🎯","Goals & Dreams","Plans for your future","an encouraging life coach","#a78bfa,#06b6d4"]];
+const LV=["Easy","Medium","Hard"],MAXT=8;
+const $=document.getElementById("app");let S={t:0,l:0},P=load(),R=null,KEY="",KEYS=getKeys(),KI=0;KEY=KEYS[0]||"";
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+function load(){try{return JSON.parse(localStorage.getItem("ff2"))||{min:0,words:0,days:[],n:0}}catch(e){return{min:0,words:0,days:[],n:0}}}
+function save(){try{localStorage.setItem("ff2",JSON.stringify(P))}catch(e){}}
+function getKey(){try{return localStorage.getItem("ff_groq")||""}catch(e){return""}}
+function streak(){let n=0,d=new Date();if(!P.days.includes(d.toDateString()))d.setDate(d.getDate()-1);while(P.days.includes(d.toDateString())){n++;d.setDate(d.getDate()-1)}return n}
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cnt=t=>(t.toLowerCase().match(/[a-z']+/g)||[]).length;
+const ready=()=>!!(KEY||WORKER_URL);
+/* ---- LLM (Groq) with automatic key switching ---- */
+const ERR=(m,c)=>{const e=new Error(m);e.code=c;return e};
+function getKeys(){try{let a=JSON.parse(localStorage.getItem("ff_keys")||"[]");const o=localStorage.getItem("ff_groq");if(o&&!a.includes(o))a.unshift(o);return a.map(x=>String(x).trim()).filter(Boolean)}catch(e){return[]}}
+function setKeys(a){KEYS=a;KI=0;KEY=a[0]||"";try{localStorage.setItem("ff_keys",JSON.stringify(a));localStorage.removeItem("ff_groq")}catch(e){}}
+async function callOnce(prompt){
+ let txt="";
+ if(KEY){const r=await fetch("https://api.groq.com/openai/v1/chat/completions",{method:"POST",headers:{Authorization:"Bearer "+KEY,"Content-Type":"application/json"},body:JSON.stringify({model:MODEL,temperature:.7,max_tokens:1500,reasoning_effort:"low",response_format:{type:"json_object"},messages:[{role:"system",content:"Reply with valid JSON only."},{role:"user",content:prompt}]})});
+  if(r.status===404&&MI<MODELS.length-1){MI++;MODEL=MODELS[MI];return callOnce(prompt)}if(r.status===401||r.status===403)throw ERR("Your API key is invalid.","auth");if(r.status===429)throw ERR("This API key has reached its limit.","limit");if(!r.ok){let t="";try{t=(await r.text()).slice(0,140)}catch(e){}throw ERR("AI error "+r.status+" "+t)}
+  txt=(await r.json()).choices[0].message.content}
+ else{const r=await fetch(WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({prompt})});
+  if(r.status===404)throw ERR("No server found here. Add your Groq key in Settings.","auth");if(r.status===429)throw ERR("The shared key reached its limit. Add your own key in Settings.","limit");if(!r.ok)throw ERR("Server error "+r.status);txt=(await r.json()).text}
+ const m=txt.match(/\{[\s\S]*\}/);return JSON.parse(m?m[0]:txt)}
+let lastPrompt=0;
+async function llm(prompt){let last=null;const tries=Math.max(1,KEYS.length);
+ for(let n=0;n<tries;n++){try{return await callOnce(prompt)}catch(e){last=e;if((e.code==="limit"||e.code==="auth")&&KEYS.length>1&&n<tries-1){KI=(KI+1)%KEYS.length;KEY=KEYS[KI];continue}break}}
+ if((last.code==="limit"||last.code==="auth")&&Date.now()-lastPrompt>60000){lastPrompt=Date.now();setTimeout(()=>settings(last.message+" Paste a new key below."),50)}
+ throw last}
+
+/* ---- Home ---- */
+function talkHome(){S.on=0;$.innerHTML=`${hd("Your AI voice assistant and English coach. Just talk.")}
+${ready()?"":`<div class="warn">Add your free Groq API key in ⚙️ Settings to start talking.</div>`}
+<div class="stats"><div class="st"><b>${Math.round(P.min*10)/10}</b><span>MIN SPOKEN</span></div><div class="st"><b>${P.words}</b><span>WORDS</span></div><div class="st"><b>🔥 ${streak()}</b><span>DAY STREAK</span></div></div>
+<div class="heroTalk"><div class="orbwrap ai"><span class="ring"></span><span class="ring"></span><span class="ring"></span><button class="orb" onclick="begin()"><span class="mi">🎙️</span></button></div><b style="font-size:21px">Tap to talk with Ollie</b>
+<div class="hint" style="max-width:480px">Hands-free, like a phone call. Say “Telugu lo cheppu” to switch to Telugu, or “speak in English” to switch back. No menus needed.</div></div>
+<div class="lab" style="text-align:center">What do you want to talk about?</div><div class="chips">${TOP.map((t,i)=>`<button class="${S.t===i?"on":""}" onclick="S.t=${i};home()">${t[0]} ${t[1]}</button>`).join("")}</div>`}
+function mask(k){return k?k.slice(0,4)+"…"+k.slice(-4):""}
+function settings(msg){document.querySelectorAll(".modal").forEach(m=>m.remove());const m=document.createElement("div");m.className="modal";
+ const st=KEYS.length?`Active key: <b>${esc(mask(KEY))}</b> (${KI+1} of ${KEYS.length})`:WORKER_URL?"Using the shared server key.":"No key yet.";
+ m.innerHTML=`<div><h2>⚙️ API keys</h2>${msg?`<div class="warn">⚠️ ${esc(msg)}</div>`:""}<div class="hint">${st}</div>
+ <div class="hint">Paste your Groq keys, one per line (get free keys at <a href="https://console.groq.com" target="_blank" rel="noopener">console.groq.com</a>). The first one is used. When it reaches its limit, the app switches to the next one automatically. Keys are saved only in this browser.</div>
+ <textarea id="k" placeholder="gsk_...&#10;gsk_... (optional backup)" spellcheck="false">${esc(KEYS.join("\n"))}</textarea><div class="hint" id="kmsg"></div>
+ <div class="row" style="margin-top:8px"><button style="flex:1" onclick="this.closest('.modal').remove()">Close</button><button class="cta" id="ksave" style="flex:1.4;margin:0;padding:12px" onclick="saveKeys()">Save &amp; test</button></div>
+ ${KEYS.length?`<p style="text-align:center;margin:12px 0 0"><a href="#" onclick="setKeys([]);settings();return false">Remove my keys</a></p>`:""}</div>`;
+ document.body.appendChild(m)}
+async function saveKeys(){const a=[...new Set(document.getElementById("k").value.split(/[\s,]+/).map(x=>x.trim()).filter(Boolean))];const o=document.getElementById("kmsg"),b=document.getElementById("ksave");
+ setKeys(a);if(!a.length&&!WORKER_URL){o.textContent="Please paste at least one key.";return}
+ b.disabled=true;o.textContent="Testing…";lastPrompt=Date.now();
+ try{await llm('Return ONLY JSON: {"ok":true}');o.innerHTML="✅ Key works! Saved.";setTimeout(()=>{document.querySelectorAll(".modal").forEach(x=>x.remove());home()},900)}
+ catch(e){o.innerHTML="❌ "+esc(e.message)+" Check the key and try again.";b.disabled=false}}
+function theme(){const t=document.documentElement.dataset.theme==="light"?"dark":"light";document.documentElement.dataset.theme=t;try{localStorage.setItem("ff_theme",t)}catch(e){}}
+try{document.documentElement.dataset.theme=localStorage.getItem("ff_theme")||"dark"}catch(e){}
+/* ---- Voice Assistant: hands-free, auto language, human-like voices ---- */
+P.cfg=Object.assign({eng:"server",vn:"",ov:"autumn",rate:1,wait:1100,gtts:true,lang:"en"},P.cfg||{});if(!P.cfg.v2){P.cfg.wait=1100;if(P.cfg.eng==="auto")P.cfg.eng="server";P.cfg.v2=1}
+const LG=()=>["en","English","en-IN","English"];
+const langNote=()=>S.nat&&String(S.nat).slice(0,2)!=="en"?` Write the strength and focus text in the language with code "${S.nat}" (keep English example phrases in English).`:"";
+let TK=0,curAudio=null,MS=null,AC=null,AN=null,REC=null,VAD=null,SI=0;const STTM=["whisper-large-v3","whisper-large-v3-turbo"];let SRVTTS=true;const NOSRV=new Set();
+const SCR=[["te",/[\u0C00-\u0C7F]/],["hi",/[\u0900-\u097F]/],["ta",/[\u0B80-\u0BFF]/],["kn",/[\u0C80-\u0CFF]/],["ml",/[\u0D00-\u0D7F]/],["bn",/[\u0980-\u09FF]/],["gu",/[\u0A80-\u0AFF]/],["pa",/[\u0A00-\u0A7F]/]];
+const scriptLang=t=>{for(const[c,r]of SCR)if(r.test(t))return c;return null};
+const LN={en:"English",te:"Telugu",hi:"Hindi",ta:"Tamil",kn:"Kannada",ml:"Malayalam",bn:"Bengali",mr:"Marathi",gu:"Gujarati",pa:"Punjabi"};
+const LW={te:/telugu|tel+ugu|తెలుగు/i,hi:/hindi|हिंदी|हिन्दी/i,ta:/tamil|தமிழ்/i,kn:/kannada|ಕನ್ನಡ/i,ml:/malayalam|മലയാളം/i,bn:/bengali|bangla|বাংলা/i,mr:/marathi|मराठी/i,gu:/gujarati|ગુજરાતી/i,pa:/punjabi|ਪੰਜਾਬੀ/i,en:/english|ఇంగ్లీష్|ఇంగ్లిష్|अंग्रेज़ी|अंग्रेजी|இங்கிலீஷ்/i};
+const ASK=/speak|talk|reply|answer|respond|switch|change|chat|cheppu|cheppandi|chepandi|matladu|maatladu|baat|bolo|bol\b|pesu|mathadu|\blo\b|\bmein\b|\bme\b.*(bol|baat)|మాట్లాడ|చెప్|బోల|बोल|बात|பேசு|ಮಾತನಾಡ|സംസാരിക്ക/i;
+function langCmd(t){if(!ASK.test(t))return null;for(const c in LW)if(LW[c].test(t))return c;return null}
+function cleanSTT(d){const s=d.segments;if(Array.isArray(s)&&s.length)return s.filter(x=>!(x.no_speech_prob>.6&&x.avg_logprob<-1)&&!(x.avg_logprob<-1.6)).map(x=>x.text).join(" ").trim();return(d.text||"").trim()}
+function sttPrompt(){const a=[...(S.m||[])].reverse().find(m=>m.r==="ai");return("Indian English conversation, may include Telugu or Hindi words. "+(a?a.segs.map(s=>s.t).join(" "):"")).slice(-220)}
+function vscore(v,l){return(l==="en"&&(/en[-_]IN/i.test(v.lang)||/india/i.test(v.name))?10:0)+(/natural|neural|online/i.test(v.name)?5:0)+(/microsoft|google/i.test(v.name)?1:0)}
+function pickVoice(l){let vs=[];try{vs=speechSynthesis.getVoices()||[]}catch(e){}
+ if(l==="en"){if(P.cfg.vn){const v=vs.find(x=>x.name===P.cfg.vn);if(v)return v}return vs.filter(v=>/^en/i.test(v.lang)).sort((a,b)=>vscore(b,l)-vscore(a,l))[0]}
+ return vs.filter(v=>v.lang.toLowerCase().startsWith(l)).sort((a,b)=>vscore(b,l)-vscore(a,l))[0]}
+function stopSpeak(){TK++;try{speechSynthesis.cancel()}catch(e){}try{curAudio&&curAudio.pause()}catch(e){}}
+function browserSay(t,l,v){return new Promise(res=>{try{const u=new SpeechSynthesisUtterance(t);v=v||pickVoice(l);if(v){u.voice=v;u.lang=v.lang}else u.lang=l==="en"?"en-IN":l;u.rate=+P.cfg.rate||1;u.onend=u.onerror=()=>res();speechSynthesis.speak(u)}catch(e){res()}})}
+function chunk(t){const o=[];let c="";for(const s of t.split(/(?<=[.!?।])\s+/)){if((c+" "+s).length>170&&c){o.push(c);c=s}else c=c?c+" "+s:s}if(c)o.push(c);return o}
+function playUrl(u){return new Promise(res=>{const a=new Audio(u);curAudio=a;a.onended=a.onerror=()=>res();a.play().catch(()=>res())})}
+let ODOWN=false;
+async function orphDirect(text){const r=await fetch("https://api.groq.com/openai/v1/audio/speech",{method:"POST",headers:{Authorization:"Bearer "+KEY,"Content-Type":"application/json"},body:JSON.stringify({model:"canopylabs/orpheus-v1-english",voice:P.cfg.ov,input:text,response_format:"wav"})});if(!r.ok){ODOWN=true;throw new Error(r.status+" Orpheus")}return URL.createObjectURL(await r.blob())}
+async function orph(text,l){l=l||"en";if(KEY&&l==="en"&&!ODOWN&&(P.cfg.eng==="orpheus"||!SRVTTS))return orphDirect(text);
+ let r;try{r=await fetch("/api/tts",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text,voice:P.cfg.ov,lang:l})})}catch(e){r={ok:false,status:0,text:async()=>""}}
+ if(!r.ok){if(KEY&&l==="en"&&!ODOWN)return orphDirect(text);let m="";try{m=(await r.text()).slice(0,80)}catch(e){}throw new Error(r.status+" "+m)}return URL.createObjectURL(await r.blob())}
+async function speakQ(segs){stopSpeak();const tk=TK;
+ for(const p of segs){if(tk!==TK)return;const t=String(p.t||"").trim();if(!t)continue;const l=String(p.l||"en").slice(0,2).toLowerCase();
+  if(((SRVTTS&&!NOSRV.has(l))||(KEY&&l==="en"&&!ODOWN))&&P.cfg.eng!=="auto"){try{const us=chunk(t).map(c=>orph(c,l));us.forEach(p=>p.catch(()=>{}));for(const u of us){if(tk!==TK)return;await playUrl(await u)}continue}catch(e){if(/^(404|405)/.test(e.message))SRVTTS=false;else if(/^501/.test(e.message))NOSRV.add(l);S.vmsg=SRVTTS?(NOSRV.has(l)?"":"Server voice failed ("+e.message+"). Using device voice."):"Server not running: run node dev-server.js (see README). Using device voice.";if(S.on)draw()}}
+  const v=pickVoice(l);
+  if(v||l==="en"||!P.cfg.gtts){await browserSay(t,l,v)}
+  else{for(const c of chunk(t)){if(tk!==TK)return;await playUrl("https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl="+l+"&q="+encodeURIComponent(c))}}}}
+function sys(){return `You are Ollie, a warm, sharp, genuinely helpful AI voice assistant, in the spirit of the best modern AI assistants. You are talking out loud with a real person, so speak the way a thoughtful, knowledgeable friend would.
+HOW TO REPLY:
+- Respond to exactly what the person said and meant. Answer questions directly and correctly first, then add the most useful detail. Never dodge, never repeat their words back, never give a generic reply.
+- Match length to the moment: one or two short sentences for small talk; a clear, complete answer (up to about 110 words) for questions, advice, explanations, stories or plans. Simple spoken sentences, concrete examples, natural rhythm. No lists, no markdown, no emojis, no headings.
+- Remember everything said earlier and build on it. Use their name and details they shared.
+- Show real understanding: if they are stressed, be kind first; if they are excited, share it; be light and funny only when it fits.
+- Ask a follow-up question only when it truly moves the conversation forward, not at the end of every reply.
+- If something is unclear, make your best guess from context, or ask one short clarifying question.
+- Be honest. If you do not know, say so plainly. Never invent facts.
+- Your English is clear, natural, neutral Indian English: simple words, contractions (I'm, don't, let's), warm tone, Indian examples when helpful. If the person struggles in English, help gently in their language and give the English sentence to repeat.
+LANGUAGE RULES: Understand any language the person speaks (Telugu, Hindi, Tamil, English or mixed). CURRENT SPEAKING LANGUAGE: ${LN[S.lang||"en"]} (code ${S.lang||"en"}). ${(S.lang||"en")==="en"?"Reply in English unless the person asks otherwise.":"EVERY segment of your reply MUST be written in "+LN[S.lang]+" (native script) with l set to "+S.lang+". Put any English phrase you want them to repeat in its own segment with l set to en. Do not switch back until they ask."}
+SPEECH-TO-TEXT NOTE: the person's words come from automatic speech recognition and may have wrong, missing or similar-sounding words, or Telugu/Hindi words written in English letters. Infer the most likely meaning from context and answer that. Never blame them.
+OUTPUT: "segments" is a list of {"t":text,"l":language code like en, te, hi, ta, kn, ml, bn, mr, gu} so each part is spoken in the right language. Write Telugu in Telugu script, Hindi in Devanagari, and so on. Topic hint: ${TOP[S.t][1]}.`}
+function ai(extra,schema){const h=S.m.slice(-24).map(m=>m.r==="me"?"User: "+m.t:"You: "+m.segs.map(s=>s.t).join(" ")).join("\n");return llm(`${sys()}\n\nConversation:\n${h||"(none)"}\n\n${extra}\n\nReturn ONLY JSON: ${schema}`)}
+async function begin(){if(!ready())return settings();stopAll();
+ S={...S,l:1,on:1,m:[],turn:0,ms:0,w:0,corr:[],st:"think",nat:"",lang:"en",err:"",vmsg:"",done:0};draw();
+ try{const r=await ai(`Greet the user warmly as Ollie in English and ask one easy question. Seed ${Math.random().toString(36).slice(2,6)}.`,'{"segments":[{"t":"greeting + question","l":"en"}]}');const segs=(r.segments||[]).filter(x=>x&&x.t);if(!segs.length)throw new Error("Empty reply");S.m.push({r:"ai",segs});S.st="ai";draw();speakQ(segs).then(()=>{if(S.on&&S.st==="ai")listen()})}catch(e){S.st="idle";S.err="⚠️ "+e.message;draw()}}
+async function micOn(){if(MS)return;MS=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});AC=new(window.AudioContext||window.webkitAudioContext)();const src=AC.createMediaStreamSource(MS);AN=AC.createAnalyser();AN.fftSize=1024;try{AC.resume&&AC.resume()}catch(e){}src.connect(AN)}
+function stopMic(){clearInterval(VAD);const r=REC;REC=null;try{r&&r.state!=="inactive"&&r.stop()}catch(e){}try{MS&&MS.getTracks().forEach(t=>t.stop())}catch(e){}try{AC&&AC.close()}catch(e){}MS=AC=AN=null}
+function stopAll(){stopSpeak();stopMic()}
+async function listen(){if(!S.on)return;
+ if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder)){S.st="idle";S.err="Voice recording needs Chrome, Edge or Safari on https or localhost. You can type below.";draw();return}
+ try{await micOn()}catch(e){S.st="idle";S.err="⚠️ Microphone blocked. Click the lock icon in the address bar, allow Microphone, then tap the orb.";draw();return}
+ const chunks=[],mt=MediaRecorder.isTypeSupported("audio/webm;codecs=opus")?"audio/webm;codecs=opus":MediaRecorder.isTypeSupported("audio/mp4")?"audio/mp4":"";
+ const rec=REC=new MediaRecorder(MS,mt?{mimeType:mt}:{});S.st="listen";S.had=false;S.err="";S.t0=0;draw();
+ rec.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};
+ rec.onstop=()=>{if(rec!==REC)return;clearInterval(VAD);const blob=new Blob(chunks,{type:rec.mimeType||mt||"audio/webm"});if(S.had&&blob.size>1500)transcribeSend(blob);else{S.st="idle";draw()}};
+ rec.start(250);
+ const buf=new Float32Array(AN.fftSize),start=Date.now();let last=start,noise=.01,hot=0,peak=0;
+ clearInterval(VAD);VAD=setInterval(()=>{try{AN.getFloatTimeDomainData(buf)}catch(e){return}let sum=0;for(let i=0;i<buf.length;i++)sum+=buf[i]*buf[i];const rms=Math.sqrt(sum/buf.length),now=Date.now();
+  
+  if(!S.had)noise=rms<noise?noise*.9+rms*.1:Math.min(.08,noise+(rms-noise)*.02);let th=Math.max(.012,noise*3);if(S.had){peak=Math.max(peak*.9985,rms);th=Math.max(th,peak*.22)}if(rms>th){if(!hot)hot=now;if(now-hot>=120){last=now;if(!S.had){S.had=true;S.t0=now;peak=rms;draw()}}}else hot=0;if(S.had&&now-S.t0>25000)stopRec();
+  const lv=document.getElementById("lvl");if(lv)lv.style.transform="scale("+(1+Math.min(rms*8,.35))+")";
+  if(S.had&&now-last>(+P.cfg.wait||2000))stopRec();else if(!S.had&&now-start>30000)stopRec()},50)}
+function stopRec(){clearInterval(VAD);try{REC&&REC.state!=="inactive"&&REC.stop()}catch(e){}}
+let SRVSTT=true;
+async function stt(blob){const ext=/mp4/.test(blob.type)?"mp4":"webm";
+ if(SRVSTT){try{const b64=await new Promise(res=>{const f=new FileReader();f.onload=()=>res(String(f.result).split(",")[1]);f.readAsDataURL(blob)});
+  const r=await fetch("/api/stt",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({audio:b64,ext,prompt:sttPrompt(),lang:S.lang||""})});
+  if(r.ok)return(await r.json()).text||"";if([404,405,501].includes(r.status))SRVSTT=false;else if([429,401,403].includes(r.status)&&!KEYS.length)throw ERR("The shared speech limit is reached. Add your own free Groq key in Settings.","limit")}catch(e){if(e.code==="limit")throw e;SRVSTT=false}}
+ if(KEYS.length){let last=0;for(let n=0;n<KEYS.length;n++){const fd=new FormData();fd.append("file",blob,"a."+ext);fd.append("model",STTM[SI]);fd.append("temperature","0");fd.append("response_format","verbose_json");fd.append("prompt",sttPrompt());if(S.lang&&S.lang!=="en")fd.append("language",S.lang);
+   const r=await fetch("https://api.groq.com/openai/v1/audio/transcriptions",{method:"POST",headers:{Authorization:"Bearer "+KEY},body:fd});
+   if(r.ok)return cleanSTT(await r.json());
+   if(r.status===404&&SI<STTM.length-1){SI++;n--;continue}
+   if(r.status===429||r.status===401||r.status===403){last=r.status;if(KEYS.length>1){KI=(KI+1)%KEYS.length;KEY=KEYS[KI];continue}}
+   throw ERR("Speech recognition error "+r.status,last?"limit":"")}
+  throw ERR("All API keys reached their limit.","limit")}
+ throw ERR("Speech recognition is not available. Add your free Groq key in Settings (or run the server).","limit")}
+async function transcribeSend(blob){S.st="think";draw();const ms=Math.max(1000,Date.now()-S.t0-(+P.cfg.wait||2000));
+ try{const t=(await stt(blob)).trim();if(t.length<2||/^(thank you\.?|thanks for watching[.!]?|please subscribe\.?|you\.?|bye\.?|\.+)$/i.test(t)){return listen()}handle(t,ms)}
+ catch(e){S.st="idle";S.err="⚠️ "+e.message;if(e.code==="limit"&&Date.now()-lastPrompt>60000){lastPrompt=Date.now();setTimeout(()=>settings("Your API key reached its limit. Paste a new key."),50)}draw()}}
+async function handle(t,ms){S.turn++;S.ms+=ms;const um={r:"me",t};const cc=langCmd(t);if(cc){S.lang=cc;if(cc!=="en")S.nat=cc}S.m.push(um);S.st="think";S.err="";draw();
+ try{const r=await ai(`The person just said the last line (speech-to-text, any language). Reply to exactly what they meant, following your rules and the CURRENT SPEAKING LANGUAGE.${cc?" They just asked you to speak "+LN[cc]+": confirm briefly in "+LN[cc]+" and continue in it.":""}`,'{"segments":[{"t":"your reply","l":"en"}]}');
+  const segs=(Array.isArray(r.segments)?r.segments:[]).filter(x=>x&&x.t);segs.forEach(x=>{x.l=scriptLang(x.t)||String(x.l||"en").slice(0,2).toLowerCase()});if(!segs.length)throw new Error("Empty reply");
+  S.m.push({r:"ai",segs});S.st="ai";draw();speakQ(segs).then(()=>{if(S.on&&S.st==="ai")listen()});coach(t,um)}
+ catch(e){S.m.pop();S.turn--;S.st="idle";S.err="⚠️ "+e.message+" Tap the orb to try again.";draw()}}
+async function coach(t,um){try{const r=await llm(`A learner said this (automatic speech-to-text, may contain small recognition errors): "${t}"\nReturn ONLY JSON: {"ulang":"code of the language they spoke","said_en":"what they said, as natural English","ok":true only if their own English was natural and correct otherwise false,"better":"natural corrected English","tip":"one short friendly tip, max 14 words"}`);
+  const ul=String(r.ulang||"en").slice(0,2).toLowerCase();um.f={ok:!!r.ok,better:r.better,tip:r.tip,said:r.said_en,ul};
+  if(ul!=="en")S.nat=ul;else{S.w+=cnt(t);if(!r.ok)S.corr.push({said:t,better:r.better||t})}
+  const lg=document.getElementById("log");if(S.on&&lg){lg.innerHTML=S.m.map(msgHtml).join("");lg.scrollTop=lg.scrollHeight}}catch(e){S.w+=cnt(t)}}
+function orb(){if(S.st==="listen"){if(S.had)stopRec()}else if(S.st==="idle")listen();else if(S.st==="ai"){stopSpeak();listen()}}
+function typed(){const el=document.getElementById("ti"),t=el.value.trim();if(!t||S.st==="think"||!S.on)return;stopSpeak();const r0=REC;REC=null;clearInterval(VAD);try{r0&&r0.state!=="inactive"&&r0.stop()}catch(e){}handle(t,3000)}
+function replay(i){const m=S.m[i];if(m&&m.segs)speakQ(m.segs)}
+function msgHtml(m,i){const hb=t=>`<button class="ic mini" data-t="${esc(t)}" onclick="sp(this.dataset.t)">🔊</button>`;
+ if(m.r==="ai")return `<div class="msg ai">${m.segs.map(s=>esc(s.t)).join("<br>")}<small><button class="ic mini" onclick="replay(${i})">🔊 Replay</button></small></div>`;
+ const f=m.f;let x="";if(f){if(f.ul&&f.ul!=="en"&&f.said)x+=`<small>🗣️ In English: “${esc(f.said)}” ${hb(f.said)}</small>`;else if(!f.ok&&f.better)x+=`<small>💡 Say: “${esc(f.better)}” ${hb(f.better)}<br>${esc(f.tip||"")}</small>`;else if(f.ok)x+=`<small>✅ Natural!</small>`}
+ return `<div class="msg me">${esc(m.t)}${x}</div>`}
+function draw(){const L={ai:"Ollie is speaking… tap the orb to interrupt",listen:S.had?"Listening… I will reply when you pause":"Listening… speak whenever you are ready",think:"Thinking…",idle:"Tap the orb and talk"};
+ const inner=S.st==="listen"?'<span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>':`<span class="mi">${S.st==="ai"?"🔊":S.st==="think"?"✨":"🎙️"}</span>`;
+ $.innerHTML=`<div class="top"><button class="ic" onclick="quit()">✕</button><span class="pill">${TOP[S.t][0]} ${TOP[S.t][1]}</span><button class="ic" onclick="voiceSet()">🔊</button></div>
+ <div class="asst"><div class="side"><div class="orbwrap ${S.st}"><span class="ring"></span><span class="ring"></span><span class="ring"></span><button class="orb" id="lvl" onclick="orb()">${inner}</button></div><div class="status">${L[S.st]}</div>
+ ${S.st==="listen"&&S.had?`<button class="pill" onclick="stopRec()">✅ Send now</button>`:""}${S.err?`<div class="warn" style="margin:0">${esc(S.err)}</div>`:""}${S.vmsg?`<div class="hint">${esc(S.vmsg)}</div>`:""}
+ <div class="hint">Say “Telugu lo cheppu” or “speak in English” anytime. Use headphones for best results.</div></div>
+ <div class="log" id="log">${S.m.map(msgHtml).join("")}${S.st==="think"?'<div class="msg ai">…</div>':""}</div></div>
+ <div class="row"><input id="ti" placeholder="Or type here in any language…" onkeydown="if(event.key==='Enter')typed()"><button onclick="typed()">Send</button></div>`;
+ const lg=document.getElementById("log");if(lg)lg.scrollTop=lg.scrollHeight}
+function quit(){stopAll();S.on=0;S.turn>=2?finish():home()}
+function voiceSet(){document.querySelectorAll(".modal").forEach(m=>m.remove());const m=document.createElement("div");m.className="modal";
+ let vs=[];try{vs=(speechSynthesis.getVoices()||[]).filter(v=>/^en/i.test(v.lang)).sort((a,b)=>vscore(b,"en")-vscore(a,"en"))}catch(e){}
+ const o=(v,t,sel)=>`<option value="${esc(v)}" ${sel?"selected":""}>${esc(t)}</option>`;
+ m.innerHTML=`<div><h2>🔊 Voice settings</h2><div class="lab">AI voice</div><select id="ve">${o("server","Best: natural English voice from server, device voice for Telugu/Hindi",P.cfg.eng==="server")}${o("orpheus","Human-like English voice (Groq Orpheus, American accent)",P.cfg.eng==="orpheus")}${o("auto","Device voice only (offline, basic)",P.cfg.eng==="auto")}</select>
+ <div class="lab">English voice on this device</div><select id="vv">${o("","Auto (best Indian English)",!P.cfg.vn)}${vs.map(v=>o(v.name,v.name+" ("+v.lang+")",P.cfg.vn===v.name)).join("")}</select>
+ <div class="lab">Human voice name</div><select id="vo">${["autumn","diana","hannah","austin","daniel","troy"].map(v=>o(v,v,P.cfg.ov===v)).join("")}</select>
+ <div class="lab">Speed: <span id="vrt">${(+P.cfg.rate||1).toFixed(2)}</span>x</div><input type="range" id="vr" min="0.6" max="1.4" step="0.05" value="${+P.cfg.rate||1}" oninput="document.getElementById('vrt').textContent=(+this.value).toFixed(2)">
+ <div class="lab">Wait after I stop talking: <span id="vwt">${((+P.cfg.wait||2000)/1000).toFixed(1)}</span>s</div><input type="range" id="vw" min="1000" max="4000" step="250" value="${+P.cfg.wait||2000}" oninput="document.getElementById('vwt').textContent=(this.value/1000).toFixed(1)">
+ <label class="hint" style="display:flex;gap:8px;align-items:flex-start"><input type="checkbox" id="vg" style="width:auto;margin-top:4px" ${P.cfg.gtts?"checked":""}>Use Google's voice for languages this device cannot speak (Telugu, Hindi…). Unofficial service, may stop working.</label>
+ <div class="hint">Tip: Microsoft Edge has free, very natural Telugu and Indian English voices. Human voice needs a Groq key and may need terms accepted at console.groq.com/playground.</div>
+ <div class="row" style="margin-top:8px"><button style="flex:1" onclick="vApply();speakQ([{t:'Hello! I am Ollie. How is your day going?',l:'en'},{t:'మీరు ఎలా ఉన్నారు?',l:'te'}])">▶ Test</button><button class="cta" style="flex:1.4;margin:0;padding:12px" onclick="vApply();save();this.closest('.modal').remove();if(!S.on)home()">Save</button></div></div>`;document.body.appendChild(m)}
+function vApply(){const g=i=>document.getElementById(i);P.cfg={...P.cfg,eng:g("ve").value,vn:g("vv").value,ov:g("vo").value,rate:+g("vr").value,wait:+g("vw").value,gtts:g("vg").checked}}
+async function finish(){if(S.done)return;S.done=1;S.on=0;stopAll();
+ $.innerHTML=`<div class="stage"><div class="orbwrap think"><span class="ring"></span><button class="orb"><span class="mi">✨</span></button></div><div class="status">Analyzing your speaking…</div></div>`;
+ const min=S.ms/60000,wpm=min>0?Math.round(S.w/min):0;P.min+=min;P.words+=S.w;P.n++;const d=new Date().toDateString();if(!P.days.includes(d))P.days.push(d);save();
+ const h=S.m.map(m=>(m.r==="me"?"Learner: ":"Partner: ")+(m.r==="me"?m.t:m.segs.map(s=>s.t).join(" "))).join("\n");let a;
+ try{a=await llm(`Assess this English learner's spoken fluency from the transcript.${langNote()}\n${h}\n\nReturn ONLY JSON: {"fluency":0-100,"grammar":0-100,"vocabulary":0-100,"cefr":"A1-C1","strength":"one encouraging sentence","focus":"one specific thing to practice next","words":["3 useful words or phrases to learn"]}`)}catch(e){a={fluency:70,grammar:70,vocabulary:70,cefr:"-",strength:"Good effort!",focus:"Keep speaking every day.",words:[]}}
+ const n=v=>Math.max(0,Math.min(100,+v||0)),bar=(t,v)=>`<div class="mrow"><span>${t}</span><b>${n(v)}</b></div><div class="meter"><i style="width:${n(v)}%"></i></div>`;
+ $.innerHTML=`<h1 class="logo">🎉 Great session!</h1><p class="tag">You practiced out loud. That is how fluency grows.</p>
+ <div class="stats"><div class="st"><b>${Math.round(min*10)/10}</b><span>MIN SPOKEN</span></div><div class="st"><b>${S.w}</b><span>WORDS</span></div><div class="st"><b>${wpm}</b><span>WORDS/MIN</span></div></div>
+ <div class="card">${bar("Fluency",a.fluency)}${bar("Grammar",a.grammar)}${bar("Vocabulary",a.vocabulary)}<div class="hint">Estimated level: <b style="color:var(--c)">${esc(a.cefr)}</b></div></div>
+ <div class="card">💪 ${esc(a.strength)}<br><br>🎯 <b>Practice next:</b> ${esc(a.focus)}</div>
+ ${S.corr.length?`<div class="card"><b>Your best upgrades</b>${S.corr.slice(0,3).map(c=>`<p style="margin:10px 0 0">❌ ${esc(c.said)}<br>✅ <span style="color:var(--g)">${esc(c.better)}</span> <button style="padding:2px 9px" data-t="${esc(c.better)}" onclick="sp(this.dataset.t)">🔊</button></p>`).join("")}</div>`:""}
+ ${a.words&&a.words.length?`<div class="card"><b>New words</b><br>${a.words.map(esc).join(" · ")}</div>`:""}
+ <button class="cta" onclick="home()">Talk again</button>`}
+function sp(t){speakQ([{t,l:"en"}])}
+/* ===== GRAMMAR + COMMUNICATION SECTIONS ===== */
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const GR=[
+{t:"Present Simple",e:"⏰",rule:"Use it for habits and facts. With he/she/it add -s. Use do/does for questions and negatives.",ex:["She works every day.","I don't drink coffee."],q:[["He ___ football on Sundays.","plays","play","playing","He/she/it needs -s."],["___ she like tea?","Does","Do","Is","Use does with she/he/it."],["They ___ not work today.","do","does","are","They + do not."],["My brother ___ in Delhi.","lives","live","living","Brother = he, so lives."]]},
+{t:"Past Simple",e:"⏪",rule:"Use it for finished actions. Regular verbs add -ed; irregular verbs change (go → went). Questions and negatives use did + base verb.",ex:["I visited my aunt yesterday.","Did you see the film?"],q:[["She ___ to Mumbai last year.","went","goes","go","Go becomes went."],["I didn't ___ the news.","watch","watched","watching","After didn't, use the base verb."],["___ you finish your work?","Did","Do","Were","Past question: Did."],["We ___ pizza last night.","ate","eat","eaten","Eat becomes ate."]]},
+{t:"Present Perfect",e:"🔗",rule:"Connects the past to now: have/has + past participle. Use it for life experiences, and with for/since.",ex:["I have visited Goa.","She has lived here for five years."],q:[["I have ___ that movie.","seen","saw","see","Have + past participle."],["He has worked here ___ 2019.","since","for","from","Since + starting point."],["She ___ never eaten sushi.","has","have","is","She + has."],["How long ___ you lived here?","have","did","are","How long + have you lived."]]},
+{t:"Articles",e:"🅰️",rule:"Use a before consonant sounds, an before vowel sounds, and the for specific things both people know.",ex:["I need an umbrella.","The sun is bright."],q:[["She is ___ engineer.","an","a","the","Engineer starts with a vowel sound."],["I saw ___ elephant.","an","a","the","Elephant starts with a vowel sound."],["___ moon goes around the Earth.","The","A","An","There is only one moon: the."],["He plays ___ guitar.","the","a","an","Use the with musical instruments."]]},
+{t:"Prepositions",e:"📍",rule:"At = clock times and exact places. On = days and dates. In = months, years, cities and countries.",ex:["See you on Monday at 5.","She lives in Pune."],q:[["The meeting is ___ 9 o'clock.","at","in","on","At + clock time."],["I was born ___ March.","in","on","at","In + month."],["We have class ___ Friday.","on","in","at","On + day."],["He lives ___ Chennai.","in","at","on","In + city."]]},
+{t:"Conditionals",e:"🔀",rule:"Real future: If + present, will + verb. Imaginary: If + past, would + verb.",ex:["If it rains, I will stay home.","If I were rich, I would travel."],q:[["If I ___ time, I will help you.","have","had","having","Real future: if + present."],["If she ___ harder, she would pass.","studied","studies","will study","Imaginary: if + past."],["I ___ buy it if I had money.","would","will","am","Imaginary: would + verb."],["If he ___ you, he will call.","sees","saw","seeing","Real future: if + present."]]}];
+const CM=[
+{t:"Small Talk",e:"💬",tp:0,tip:"Ask open questions and add one detail about yourself to keep the chat alive.",ph:["How's your day going?","That sounds interesting! Tell me more.","Oh really? Me too!"],q:[["A stranger says: “Nice weather today!”","Yes, it's lovely! Are you enjoying it?","Yes.","I don't talk to strangers.","Agree and ask a question."],["Someone says: “I just got back from Goa.”","Oh nice! How was it?","Okay.","Goa is far.","Show interest with a question."],["You meet a new colleague.","Hi, I'm Ravi. How long have you worked here?","Who are you?","Hello bye.","Introduce yourself and ask."]]},
+{t:"Polite Opinions",e:"🗣️",tp:5,tip:"Start with “I think” or “In my opinion”, then give a reason with “because”.",ph:["In my opinion, it's a great idea because it saves time.","I see your point, but I'd suggest another way.","I partly agree with you."],q:[["You disagree with your friend. Say it politely.","I see your point, but I think we should wait.","You are wrong.","No way.","Acknowledge first, then disagree."],["Give your opinion on remote work.","I think remote work is good because it saves time.","Remote work good.","Because yes.","Opinion + because + reason."],["You agree with only half of the idea.","I partly agree, but I have a different idea.","Never.","Whatever.","Partly agree keeps it friendly."]]},
+{t:"Ask & Clarify",e:"🙋",tp:1,tip:"Never pretend to understand. Asking politely makes you sound confident, not weak.",ph:["Sorry, could you repeat that, please?","Could you speak a little slower?","Do you mean we should start tomorrow?"],q:[["You did not hear the question.","Sorry, could you say that again?","What?","I no hear.","Sorry + could you + request."],["The speaker is too fast.","Could you speak a bit slower, please?","Too fast!","Slow.","Use could you + please."],["Check if you understood.","So you mean the meeting is at ten?","Ten?","Meeting you ten.","Repeat in your own words."]]},
+{t:"Keep Talking",e:"🌊",tp:0,tip:"Replace “um” with smart fillers: Well…, Let me think…, Actually… and keep speaking without stopping to fix grammar.",ph:["Well, let me think about that.","Actually, I'd say it depends.","What I mean is, I need more time."],q:[["You need time to think.","Well, let me think for a moment.","Umm... umm... umm...","I don't know.","Natural fillers buy thinking time."],["Explain your point again.","What I mean is, I need more time.","No.","Stop.","Rephrase with “What I mean is”."],["Add a detail to your story.","For example, last week I visited a temple.","And and and.","That's all.","“For example” adds detail."]]},
+{t:"Work & Meetings",e:"💼",tp:2,tip:"Be clear and short. Use signposts: First, Second, Finally.",ph:["First, let me give a quick update.","Could we schedule a follow-up?","Thanks for your time today."],q:[["Start giving an update.","Good morning. Let me give a quick update.","Listen to me.","Hi hi.","Greet and signpost."],["Close the meeting.","Thank you everyone. Let's follow up next week.","Okay bye.","Meeting finished.","Thank and plan the next step."],["Ask a teammate for help.","Could you help me with this report, please?","Do this.","Help me now.","Could you + please is polite."]]}];
+if(!P.done)P.done={};
+const tabs=()=>`<div class="tabs">${[["talk","🎙️ Speak"],["gram","📘 Grammar"],["comm","🤝 Communicate"]].map(t=>`<button class="${(S.tab||"talk")===t[0]?"on":""}" onclick="S.tab='${t[0]}';home()">${t[1]}</button>`).join("")}</div>`;
+function hd(sub){return `<div class="head"><h1 class="logo">🌊 FluentFlow</h1><span class="hb"><button class="ic" onclick="voiceSet()">🔊</button><button class="ic" onclick="theme()">🌓</button><button class="ic" onclick="settings()">⚙️</button></span></div><p class="tag">${sub}</p>${tabs()}`}
+function home(){S.on=0;if(S.tab==="gram")return gramHome();if(S.tab==="comm")return commHome();talkHome()}
+function done(k){return P.done[k]!=null?` <span class="pill" style="font-size:12px">best ${P.done[k]} ✓</span>`:""}
+function gramHome(){$.innerHTML=hd("Learn the grammar that matters. Short rules, instant practice.")+`<div class="lab">Grammar lessons</div><div class="lessons">`+(GR.map((g,i)=>`<button class="lesson" onclick="gramLesson(${i})"><i>${g.e}</i><span><b>${g.t}</b>${done("g"+i)}<small>${g.rule.split(".")[0]}.</small></span></button>`).join(""))+`</div>`}
+function gramLesson(i){const g=GR[i];$.innerHTML=`<div class="top"><button class="ic" onclick="home()">←</button><span class="pill">${g.e} ${g.t}</span><span></span></div><div class="card"><b>📖 The rule</b><p>${g.rule}</p></div><div class="card"><b>Examples</b>${g.ex.map(x=>`<p class="exr"><span>${x}</span><button class="ic" data-t="${esc(x)}" onclick="sp(this.dataset.t)">🔊</button><button class="ic" data-t="${esc(x)}" onclick="chk(this)">🎤</button></p>`).join("")}<div class="hint">Tap 🎤 and say the sentence out loud.</div><button id="nx" style="width:100%;margin-top:8px" onclick="newEx('g',${i})">🔄 New examples</button></div><button class="cta" onclick="qgen('g',${i})">Start practice quiz (new questions every time)</button>`}
+function commHome(){$.innerHTML=hd("Speak with confidence in real situations.")+`<div class="lab">Communication skills</div><div class="lessons">`+(CM.map((c,i)=>`<button class="lesson" onclick="commLesson(${i})"><i>${c.e}</i><span><b>${c.t}</b>${done("c"+i)}<small>${c.tip.split(".")[0]}.</small></span></button>`).join(""))+`</div>`}
+function commLesson(i){const c=CM[i];$.innerHTML=`<div class="top"><button class="ic" onclick="home()">←</button><span class="pill">${c.e} ${c.t}</span><span></span></div><div class="card"><b>💡 Pro tip</b><p>${c.tip}</p></div><div class="card"><b>Say it like this</b>${c.ph.map(x=>`<p class="exr"><span>${x}</span><button class="ic" data-t="${esc(x)}" onclick="sp(this.dataset.t)">🔊</button><button class="ic" data-t="${esc(x)}" onclick="chk(this)">🎤</button></p>`).join("")}<div class="hint">Listen, then repeat out loud (shadowing).</div><button id="nx" style="width:100%;margin-top:8px" onclick="newEx('c',${i})">🔄 New phrases</button></div><button class="cta" onclick="qgen('c',${i})">Practice: choose the best reply (new every time)</button><button class="cta" style="background:var(--card);color:var(--tx);border:1px solid var(--line);box-shadow:none;margin-top:10px" onclick="S.t=${c.tp};S.tab='talk';begin()">🎙️ Practice live with AI</button>`}
+function chk(b){const t=b.dataset.t;if(!SR){b.textContent="🚫";return}try{const r=new SR();r.lang="en-IN";b.textContent="…";r.onresult=e=>{const h=(e.results[0][0].transcript.toLowerCase().match(/[a-z']+/g)||[]),w=(t.toLowerCase().match(/[a-z']+/g)||[]),p=Math.round(w.filter(x=>h.includes(x)).length/w.length*100);b.textContent=p>=70?"✅"+p:"🔁"+p};r.onerror=()=>{b.textContent="🎤"};r.onend=()=>{if(b.textContent==="…")b.textContent="🎤"};r.start()}catch(e){b.textContent="🎤"}}
+function qz(items,title,key,back,ex){S.q={items:shuf(items),k:0,sc:0,title,key,back,fb:null,o:null,...(ex||{})};qDraw()}
+function qDraw(){const q=S.q;if(q.k>=q.items.length){const n=q.items.length;P.done[q.key]=Math.max(P.done[q.key]||0,q.sc);save();return $.innerHTML=`<h1 class="logo">${q.sc===n?"🏆 Perfect!":"🎉 Done!"}</h1><div class="stats" style="grid-template-columns:1fr 1fr"><div class="st"><b>${q.sc}/${n}</b><span>CORRECT</span></div><div class="st"><b>${q.title}</b><span>LESSON</span></div></div><p class="tag">${q.sc===n?"Flawless. Try speaking these ideas with the AI!":"Good work. Retry to get a perfect score."}</p><button class="cta" onclick="qgen('${q.kind}',${q.idx})">New questions</button><button class="cta" style="background:var(--card);color:var(--tx);border:1px solid var(--line);box-shadow:none;margin-top:10px" onclick="${q.back}()">Back to lessons</button>`}
+ const it=q.items[q.k];if(!q.o)q.o=shuf([it[1],it[2],it[3]]);
+ $.innerHTML=`<div class="top"><button class="ic" onclick="${q.back}()">✕</button><span class="pill">${q.title}</span><span class="pill">${q.k+1}/${q.items.length}</span></div><div class="stage" style="justify-content:flex-start"><div class="hint">${q.src||""}</div><div class="cap" style="font-size:20px">${esc(it[0]).replace("___","_____")}</div>${q.o.map((o,i)=>`<button style="width:100%;text-align:left;${q.fb?(o===it[1]?"border-color:var(--g);color:var(--g)":q.fb.p===i?"border-color:var(--r);color:var(--r)":""):""}" ${q.fb?"disabled":""} onclick="qPick(${i})">${esc(o)}</button>`).join("")}${q.fb?`<div class="fix ${q.fb.ok?"ok":""}">${q.fb.ok?"✅ <b>Correct!</b> ":"❌ <b>Not quite.</b> "}${esc(it[4])}</div><button class="cta" style="margin:0" onclick="S.q.k++;S.q.o=null;S.q.fb=null;qDraw()">Next →</button>`:""}</div>`}
+function qPick(i){const q=S.q,it=q.items[q.k],ok=q.o[i]===it[1];if(ok)q.sc++;q.fb={ok,p:i};qDraw();sp(ok?it[1]:it[1])}
+
+/* ===== DYNAMIC QUESTION ENGINE ===== */
+const THEMES=["school","travel","office work","family","shopping","sports","health","technology","food","friends","weekend plans","city life","movies","money","the weather","hobbies","public transport","a restaurant","a hotel","social media"];
+async function qgen(kind,i){
+ const L=kind==="g"?GR[i]:CM[i],key=kind+i,back=kind==="g"?"gramHome":"commHome";
+ P.hist=P.hist||{};const hist=P.hist[key]||[];
+ $.innerHTML=`<div class="stage"><div class="orbwrap think"><span class="ring"></span><button class="orb"><span class="mi">✨</span></button></div><div class="status">Creating fresh questions…</div></div>`;
+ let items=null,why="",src="";
+ if(ready()){for(let a=0;a<2&&!items;a++){try{
+  const th=shuf(THEMES).slice(0,3).join(", ");
+  const r=await llm(`Create 5 NEW multiple-choice English practice questions for an English learner (India).\nLesson: ${L.t}. ${kind==="g"?"Grammar rule: "+L.rule+"\nEach question is ONE sentence containing a ___ blank; the options fill the blank.":"Tip: "+L.tip+"\nEach question is a short real-life situation (like 'Someone says: ...' or 'You need to ...'); the options are 3 things the learner could say; exactly one is natural, polite and correct."}\nUse these themes for variety: ${th}.\nDo NOT repeat or paraphrase these earlier questions: ${JSON.stringify(hist.slice(-25))}\nVariety seed: ${Math.random().toString(36).slice(2,8)}${P.cfg.lang!=="en"?`\nWrite each "why" in ${LG(P.cfg.lang)[3]} (keep English examples in English).`:""}\nReturn ONLY JSON: {"q":[{"p":"question","right":"correct option","w1":"wrong option","w2":"wrong option","why":"one short reason"}]}`);
+  const q=Array.isArray(r.q)?r.q:Array.isArray(r)?r:[];
+  const ok=q.filter(x=>x&&x.p&&x.right&&x.w1&&x.w2&&x.why&&new Set([x.right,x.w1,x.w2]).size===3&&(kind!=="g"||String(x.p).includes("___"))).map(x=>[String(x.p),String(x.right),String(x.w1),String(x.w2),String(x.why)]);
+  if(ok.length>=3){items=ok;src="✨ Fresh AI questions"}else why="AI gave too few valid questions"}catch(e){why=e.message}}}
+ else why="no API key";
+ if(!items){const fresh=L.q.filter(x=>!hist.includes(x[0]));items=fresh.length>=3?fresh:L.q;src="📚 Practice bank. AI unavailable: "+why}
+ P.hist[key]=hist.concat(items.map(x=>x[0])).slice(-40);save();
+ qz(items,L.t,key,back,{kind,idx:i,src});
+}
+async function newEx(kind,i){
+ const L=kind==="g"?GR[i]:CM[i];if(!ready())return alert("Add your Groq key in ⚙️ Settings to get new examples.");
+ const b=document.getElementById("nx");if(b)b.textContent="Creating…";
+ try{const r=await llm(`Give 3 NEW natural ${kind==="g"?"English example sentences that clearly show this grammar: "+L.rule:"English phrases a learner can say for: "+L.t+". Tip: "+L.tip}. Theme: ${shuf(THEMES)[0]}. Simple spoken style, under 15 words each. Variety seed: ${Math.random().toString(36).slice(2,8)}. Return ONLY JSON: {"items":["...","...","..."]}`);
+  const a=(r.items||[]).filter(x=>typeof x==="string"&&x.length<120).slice(0,3);if(a.length)L[kind==="g"?"ex":"ph"]=a}catch(e){}
+ kind==="g"?gramLesson(i):commLesson(i)}
+
+home();
+</script></body></html>
